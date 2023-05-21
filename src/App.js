@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 const App = () => {
   const [number, setNumber] = useState(0);
@@ -10,7 +10,9 @@ const App = () => {
     color: dark ? 'white' : 'black'
   }
 
-  return (
+  useEffect(() =>{console.log("theme Changed")}, [themeStyles])
+
+    return (
       <>
         <input type="number" value={number} onChange={e=>setNumber(parseInt(e.target.value))}/>
         <button onClick={() => setDark(prevDark => !prevDark)}>Change Theme</button>
