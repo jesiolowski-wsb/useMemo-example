@@ -5,10 +5,12 @@ const App = () => {
   const [dark, setDark] = useState(false);
   const doubleNumber = useMemo(() => slowFunction(number), [number])
 
-  const themeStyles = {
-    backgroundColor: dark ? 'black' : 'white',
-    color: dark ? 'white' : 'black'
-  }
+  const themeStyles = useMemo(() => {
+    return {
+      backgroundColor: dark ? 'black' : 'white',
+      color : dark ? 'white' : 'black'
+    }
+  },[dark])
 
   useEffect(() =>{console.log("theme Changed")}, [themeStyles])
 
